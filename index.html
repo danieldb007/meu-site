@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Diederichsen de Brito | Desenvolvedor & Gestor de Projetos</title>
+    <!-- Carrega o Tailwind CSS para o design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a biblioteca de ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Fonte limpa e moderna */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+        
+        /* Linha contínua para a Timeline */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px; /* Centralizado com o ícone */
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Navegação / Cabeçalho -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-bold text-lg sm:text-xl tracking-tight text-blue-600 truncate max-w-[200px] sm:max-w-none">Daniel Diederichsen de Brito</span>
+                </div>
+                <!-- Menu Desktop -->
+                <div class="hidden md:ml-6 md:flex md:space-x-8">
+                    <a href="#sobre" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
+                    <a href="#projetos" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos Técnicos</a>
+                    <a href="#lideranca" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Liderança</a>
+                    <a href="#contato" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                </div>
+                <!-- Botão Menu Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seção Hero (Apresentação Principal) -->
+    <section id="sobre" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-3/5 text-center md:text-left">
+            <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Olá, eu sou o Daniel Diederichsen de Brito</h2>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                Unindo Gestão de Projetos e <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Inteligência Artificial</span>.
+            </h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto md:mx-0">
+                Atuo na interseção entre tecnologia e liderança. Desenvolvo ferramentas inovadoras para a web, como plataformas de busca com IA, e aplico minha visão estratégica na gestão de projetos e equipes de alto desempenho.
+            </p>
+            <div class="flex justify-center md:justify-start gap-4 flex-wrap">
+                <a href="#projetos" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm">
+                    Ver Projetos <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+                <a href="#lideranca" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm">
+                    Voluntariado
+                </a>
+                <!-- Link do LinkedIn em destaque no topo -->
+                <a href="https://www.linkedin.com/in/danieldbrito" target="_blank" rel="noopener noreferrer" class="bg-[#0A66C2] hover:bg-[#004182] text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i> Conectar
+                </a>
+            </div>
+        </div>
+        <div class="md:w-2/5 flex justify-center">
+            <!-- Placeholder da Foto -->
+            <div class="w-64 h-64 md:w-80 md:h-80 bg-gray-200 rounded-full border-4 border-white shadow-xl overflow-hidden flex items-center justify-center relative">
+                <i data-lucide="user" class="w-32 h-32 text-gray-400"></i>
+                <!-- Você pode substituir o ícone acima pela sua foto usando a tag img abaixo -->
+                <!-- <img src="sua-foto.jpg" alt="Daniel" class="w-full h-full object-cover"> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologias e Ferramentas -->
+    <section class="bg-white py-12 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-sm font-medium text-gray-400 uppercase tracking-widest mb-6">Minha Expertise</p>
+            <div class="flex flex-wrap justify-center gap-8 items-center text-gray-500">
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="brain-circuit" class="w-5 h-5"></i> IA & Automação</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="code-2" class="w-5 h-5"></i> Desenvolvimento Web</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="kanban-square" class="w-5 h-5"></i> Gestão de Projetos</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="users" class="w-5 h-5"></i> Liderança & Voluntariado</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Projetos Técnicos -->
+    <section id="projetos" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Portfólio Técnico</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Soluções desenvolvidas com foco em utilidade e inovação tecnológica.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- PROJETO 1: A Plataforma de IA -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col relative">
+                <div class="absolute top-4 right-4 z-10">
+                    <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">IA Aplicada</span>
+                </div>
+                <div class="h-48 bg-gray-900 relative flex items-center justify-center overflow-hidden">
+                    <i data-lucide="search-check" class="w-16 h-16 text-blue-400 group-hover:scale-110 transition-transform duration-500"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Fomento Fácil</h3>
+                    <p class="text-gray-600 text-sm mb-4 flex-1">
+                        Plataforma de busca inteligente para editais e oportunidades de fomento, utilizando Inteligência Artificial para melhorar a precisão, categorização e relevância dos resultados.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">IA Integrada</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Sistema Dinâmico</span>
+                    </div>
+                    <a href="https://fomentofacil.com.br" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Visitar Fomento Fácil <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJETO 2: Website 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col">
+                <div class="h-48 bg-gray-100 relative flex items-center justify-center overflow-hidden border-b border-gray-200">
+                    <i data-lucide="layout" class="w-16 h-16 text-gray-400 group-hover:scale-110 transition-transform duration-500"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Teodora Estephan</h3>
+                    <p class="text-gray-600 text-sm mb-4 flex-1">
+                        Website institucional completo desenvolvido com foco em usabilidade, performance e design responsivo, garantindo uma presença digital sólida e profissional.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Front-end</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">UX/UI</span>
+                    </div>
+                    <a href="https://teodoraestephan.com.br" target="_blank" class="inline-flex items-center text-gray-600 font-semibold hover:text-gray-900 transition-colors">
+                        Acessar Site <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJETO 3: Website 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col">
+                <div class="h-48 bg-gray-100 relative flex items-center justify-center overflow-hidden border-b border-gray-200">
+                    <i data-lucide="monitor-smartphone" class="w-16 h-16 text-gray-400 group-hover:scale-110 transition-transform duration-500"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Eletrique</h3>
+                    <p class="text-gray-600 text-sm mb-4 flex-1">
+                        Desenvolvimento web com estrutura otimizada para velocidade e experiência do usuário, aliando design moderno com foco em conversão e resultados.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Web Design</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Otimização</span>
+                    </div>
+                    <a href="https://eletrique.com.br" target="_blank" class="inline-flex items-center text-gray-600 font-semibold hover:text-gray-900 transition-colors">
+                        Acessar Site <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Seção Liderança e Voluntariado (Linha do Tempo) -->
+    <section id="lideranca" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Liderança & Impacto no PMI Goiás</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Minha jornada de voluntariado e gestão estratégica, onde aplico na prática os conceitos de liderança e execução de projetos.
+                </p>
+            </div>
+
+            <!-- Container da Linha do Tempo -->
+            <div class="relative timeline-line py-8">
+                
+                <!-- Item 1: 2024 - Analista -->
+                <div class="relative flex flex-col md:flex-row items-center mb-16 z-10 group">
+                    <div class="md:w-1/2 flex justify-start md:justify-end md:pr-12 w-full pl-12 md:pl-0">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-lg w-full md:max-w-md group-hover:border-blue-500 transition-colors">
+                            <span class="text-blue-400 font-bold text-sm tracking-wider uppercase mb-1 block">Início da Jornada</span>
+                            <h3 class="text-xl font-bold mb-2">Analista de Projetos</h3>
+                            <p class="text-gray-400 text-sm">
+                                Atuação direta no <strong>17° Seminário de Gestão, Projetos e Liderança</strong>. Fui responsável pelo apoio analítico e acompanhamento prático das entregas estruturais do evento.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Ícone Central -->
+                    <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 md:translate-y-0 top-0 md:top-1/2 w-12 h-12 bg-blue-600 rounded-full border-4 border-gray-900 flex items-center justify-center shadow-xl">
+                        <span class="font-bold text-sm">2024</span>
+                    </div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+                <!-- Item 2: 2025 - GP -->
+                <div class="relative flex flex-col md:flex-row items-center mb-16 z-10 group">
+                    <div class="md:w-1/2 hidden md:block"></div>
+                    <!-- Ícone Central -->
+                    <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 md:translate-y-0 top-0 md:top-1/2 w-12 h-12 bg-purple-600 rounded-full border-4 border-gray-900 flex items-center justify-center shadow-xl">
+                        <span class="font-bold text-sm">2025</span>
+                    </div>
+                    <div class="md:w-1/2 w-full pl-12 md:pl-12">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-lg w-full md:max-w-md group-hover:border-purple-500 transition-colors">
+                            <span class="text-purple-400 font-bold text-sm tracking-wider uppercase mb-1 block">Liderança Direta</span>
+                            <h3 class="text-xl font-bold mb-2">Gerente de Projetos (GP)</h3>
+                            <p class="text-gray-400 text-sm mb-3">
+                                Assumi a gerência executiva de duas frentes cruciais para o Capítulo, liderando escopo, cronograma e equipes de voluntários:
+                            </p>
+                            <ul class="text-gray-300 font-medium text-sm list-disc list-inside space-y-1">
+                                <li>6° Ciclo de Mentoria</li>
+                                <li>18° Seminário de Gestão, Projetos e Liderança</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Atual - Diretor -->
+                <div class="relative flex flex-col md:flex-row items-center z-10 group">
+                    <div class="md:w-1/2 flex justify-start md:justify-end md:pr-12 w-full pl-12 md:pl-0">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)] w-full md:max-w-md relative overflow-hidden">
+                            <!-- Efeito de brilho de fundo -->
+                            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-500 rounded-full opacity-20 blur-2xl"></div>
+                            
+                            <span class="text-emerald-400 font-bold text-sm tracking-wider uppercase mb-1 block">Presente & Futuro</span>
+                            <h3 class="text-2xl font-bold mb-2 text-white">Diretor de Desenv. Profissional</h3>
+                            <p class="text-gray-300 text-sm mb-4">
+                                Na diretoria do PMI Goiás, sou responsável por um portfólio de iniciativas essenciais para a comunidade de gestão:
+                            </p>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-gray-900/80 p-3 rounded-lg border border-gray-700 flex items-start gap-3">
+                                    <div class="bg-blue-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i></div>
+                                    <div>
+                                        <span class="block font-semibold text-gray-200 text-sm">Mentoring, Webinar e GP na Prática</span>
+                                        <span class="text-xs text-gray-500">Supervisão e suporte a 3 projetos ativos fundamentais do Capítulo.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-900/80 p-3 rounded-lg border border-gray-700 flex items-start gap-3">
+                                    <div class="bg-orange-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="flame" class="w-4 h-4 text-orange-400"></i></div>
+                                    <div>
+                                        <span class="block font-semibold text-gray-200 text-sm">Jornada de Gestão de Projetos - MT</span>
+                                        <span class="text-xs text-gray-500">Projeto "no forno", em estruturação avançada para lançamento no Mato Grosso.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-900/80 p-3 rounded-lg border border-gray-700 flex items-start gap-3">
+                                    <div class="bg-purple-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="map" class="w-4 h-4 text-purple-400"></i></div>
+                                    <div>
+                                        <span class="block font-semibold text-gray-200 text-sm">Novas Estratégias</span>
+                                        <span class="text-xs text-gray-500">Mapeamento e planejamento contínuo de futuras ações para o Capítulo.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ícone Central -->
+                    <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 md:translate-y-0 top-0 md:top-1/2 w-14 h-14 bg-emerald-600 rounded-full border-4 border-gray-900 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.5)] z-20">
+                        <i data-lucide="star" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé e Contato - Atualizado com WhatsApp e LinkedIn -->
+    <footer id="contato" class="bg-white border-t border-gray-100 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Vamos conversar?</h2>
+            <p class="text-gray-600 mb-8 text-lg">
+                Seja para falar sobre tecnologia, inteligência artificial ou governança de projetos, estou à disposição. Me mande uma mensagem direta!
+            </p>
+            
+            <!-- Botão Gigante do WhatsApp -->
+            <a href="https://wa.me/5562999186800" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-12 w-full sm:w-auto text-lg">
+                <i data-lucide="message-circle" class="w-7 h-7"></i>
+                Chamar no WhatsApp
+            </a>
+
+            <div class="flex justify-center gap-6 mb-12">
+                <!-- Ícone do LinkedIn -->
+                <a href="https://www.linkedin.com/in/danieldbrito" target="_blank" rel="noopener noreferrer" 
+                   class="p-4 bg-blue-50 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white rounded-full transition-colors group" aria-label="Perfil no LinkedIn">
+                    <i data-lucide="linkedin" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                </a>
+                <!-- Ícone do GitHub (Deixei preparado caso queira usar) -->
+                <a href="https://github.com/seugithub" target="_blank" rel="noopener noreferrer" 
+                   class="p-4 bg-gray-50 text-gray-700 hover:bg-gray-900 hover:text-white rounded-full transition-colors group" aria-label="Perfil no GitHub">
+                    <i data-lucide="github" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+            
+            <p class="text-gray-500 text-sm border-t border-gray-100 pt-8">
+                &copy; 2026 Daniel Diederichsen de Brito. Todos os direitos reservados. | <a href="https://danieldbrito.com.br" class="text-blue-600 hover:underline">danieldbrito.com.br</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script para inicializar os ícones e funcionalidades simples -->
+    <script>
+        lucide.createIcons();
+
+        // Efeito de sombra no menu ao rolar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.add('shadow-sm');
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
