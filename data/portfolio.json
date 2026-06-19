@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "titulo": "Business Agility Portal",
+    "subtitulo": "Painel do Portfólio Estratégico",
+    "responsavel": "Daniel Diederichsen de Brito",
+    "posicao": "Diretor de Desenvolvimento Profissional · PMI Goiás",
+    "versao": "2.0",
+    "atualizadoEm": "Junho 2026",
+    "horizonteMeses": 24,
+    "limiarEntrada": 100,
+    "pontuacaoMaxima": 130
+  },
+  "criterios": [
+    { "id": "alinhamento", "nome": "Alinhamento estratégico", "peso": 5 },
+    { "id": "valor", "nome": "Geração de valor", "peso": 5 },
+    { "id": "cliente", "nome": "Impacto no cliente", "peso": 4 },
+    { "id": "urgencia", "nome": "Urgência", "peso": 4 },
+    { "id": "risco", "nome": "Redução de risco", "peso": 3 },
+    { "id": "viabilidade", "nome": "Viabilidade", "peso": 3 },
+    { "id": "dependencias", "nome": "Dependências", "peso": 2 }
+  ],
+  "iniciativas": [
+    {
+      "id": "I1",
+      "nome": "Fundamentos & Mindset",
+      "area": "Capacitação",
+      "objetivo": "Transição do preditivo para o empirismo; definição de valor, visão e priorização; eliminação de silos.",
+      "status": "priorizada",
+      "esforco": "baixo",
+      "valor": "alto",
+      "onda": 1,
+      "notas": { "alinhamento": 5, "valor": 4, "cliente": 3, "urgencia": 5, "risco": 4, "viabilidade": 5, "dependencias": 5 }
+    },
+    {
+      "id": "I2",
+      "nome": "Motor Tático (Scrum & Kanban)",
+      "area": "Execução",
+      "objetivo": "Planejamento progressivo e backlog; Kanban com limite de WIP; redução de gargalos.",
+      "status": "priorizada",
+      "esforco": "médio",
+      "valor": "alto",
+      "onda": 1,
+      "notas": { "alinhamento": 5, "valor": 5, "cliente": 4, "urgencia": 4, "risco": 4, "viabilidade": 4, "dependencias": 4 }
+    },
+    {
+      "id": "I3",
+      "nome": "Governança Ágil & IA",
+      "area": "Governança",
+      "objetivo": "Desempenho (velocidade vs. valor); riscos adaptativos; IA generativa com ética na decisão.",
+      "status": "em andamento",
+      "esforco": "alto",
+      "valor": "alto",
+      "onda": 2,
+      "notas": { "alinhamento": 5, "valor": 5, "cliente": 4, "urgencia": 3, "risco": 5, "viabilidade": 3, "dependencias": 2 }
+    },
+    {
+      "id": "I4",
+      "nome": "Métricas de Valor",
+      "area": "PMO",
+      "objetivo": "Indicadores de fluxo (Lead/Cycle Time) e de benefícios realizados, substituindo 'tarefas concluídas'.",
+      "status": "priorizada",
+      "esforco": "médio",
+      "valor": "alto",
+      "onda": 1,
+      "notas": { "alinhamento": 5, "valor": 4, "cliente": 3, "urgencia": 4, "risco": 4, "viabilidade": 4, "dependencias": 3 }
+    },
+    {
+      "id": "I5",
+      "nome": "Revisão de Capacidade",
+      "area": "Liderança",
+      "objetivo": "Mapear capacidade vs. demanda e cadência de revisão para reduzir iniciativas simultâneas.",
+      "status": "ideia",
+      "esforco": "médio",
+      "valor": "médio",
+      "onda": null,
+      "notas": { "alinhamento": 4, "valor": 3, "cliente": 2, "urgencia": 3, "risco": 4, "viabilidade": 4, "dependencias": 3 }
+    }
+  ],
+  "ondas": [
+    { "numero": 1, "nome": "Estruturar e medir", "janela": "0–6 meses", "destrava": "Carteira priorizada e visível, WIP limitado e baseline dos KPIs." },
+    { "numero": 2, "nome": "Executar e governar", "janela": "6–12 meses", "destrava": "Decisões mais rápidas e defensáveis, riscos adaptativos e redução do time-to-market." },
+    { "numero": 3, "nome": "Escalar e consolidar", "janela": "12–24 meses", "destrava": "Modelo adaptativo institucionalizado e melhor uso da capacidade em escala." }
+  ],
+  "kpis": [
+    { "nome": "Time-to-market", "meta": "−30% em 12 m", "frequencia": "Mensal", "responsavel": "Gestor do portfólio" },
+    { "nome": "Lead / Cycle Time", "meta": "−25%", "frequencia": "Quinzenal", "responsavel": "Agile Coach" },
+    { "nome": "Lead time de decisão", "meta": "≤ 2 semanas", "frequencia": "Mensal", "responsavel": "PMO" },
+    { "nome": "% iniciativas alinhadas à estratégia", "meta": "≥ 90%", "frequencia": "Trimestral", "responsavel": "Estratégia" },
+    { "nome": "Taxa de aplicação prática", "meta": "≥ 70%", "frequencia": "Mensal", "responsavel": "Líder do programa" },
+    { "nome": "Capacidade consumida vs. disponível", "meta": "80–90%", "frequencia": "Quinzenal", "responsavel": "Gestor do portfólio" },
+    { "nome": "NPS", "meta": "≥ 50", "frequencia": "Semestral", "responsavel": "Líder do programa" }
+  ],
+  "riscos": [
+    { "risco": "Resistência à mudança", "impacto": "Alto", "probabilidade": "Média", "resposta": "Gestão de mudança ativa, patrocínio visível e quick wins na Onda 1." },
+    { "risco": "Falta de patrocínio executivo", "impacto": "Alto", "probabilidade": "Baixa", "resposta": "Envolver C-Level no comitê e vincular ao objetivo estratégico." },
+    { "risco": "Excesso de iniciativas simultâneas", "impacto": "Médio", "probabilidade": "Média", "resposta": "Limite de WIP do portfólio; limiar de entrada (≥100) e cadência." },
+    { "risco": "Conflitos entre prioridades", "impacto": "Médio", "probabilidade": "Média", "resposta": "Matriz de pontuação objetiva e fórum único de decisão." },
+    { "risco": "Métricas mal definidas", "impacto": "Médio", "probabilidade": "Média", "resposta": "Iniciativa I4 dedicada; KPIs com cálculo, baseline e responsável." },
+    { "risco": "Baixa maturidade ágil", "impacto": "Médio", "probabilidade": "Média", "resposta": "Abordagem contextual (Choose Your WoW) e capacitação por módulos." },
+    { "risco": "Uso inadequado de IA na gestão", "impacto": "Alto", "probabilidade": "Baixa", "resposta": "Supervisão humana (HITL) e governança ética de IA." }
+  ]
+}
