@@ -8,6 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Carrega a biblioteca de ícones Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  // Adicione esta linha para o Lucide "encontrar" seus ícones
+  lucide.createIcons();
+</script>
     <style>
         /* Fonte limpa e moderna */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -335,5 +340,33 @@
             }
         });
     </script>
+<div id="claude-container" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc;">
+    <h3>Fale com o Claude</h3>
+    <input type="text" id="userInput" placeholder="Digite sua pergunta aqui..." style="width: 70%;">
+    <button onclick="perguntarAoClaude()">Enviar</button>
+    <p id="respostaClaude" style="margin-top: 10px; font-weight: bold;"></p>
+</div>
+
+<script>
+async function perguntarAoClaude() {
+    const texto = document.getElementById('userInput').value;
+    const respostaDisplay = document.getElementById('respostaClaude');
+    
+    respostaDisplay.innerText = "Processando...";
+
+    try {
+        const response = await fetch('http://34.121.124.208:3000/api/claude', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mensagem: texto })
+        });
+        const data = await response.json();
+        respostaDisplay.innerText = 'Claude diz: ' + data.resposta;
+    } catch (error) {
+        respostaDisplay.innerText = 'Erro ao conectar com o servidor.';
+        console.error(error);
+    }
+}
+</script>
 </body>
 </html>
