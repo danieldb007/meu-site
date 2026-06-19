@@ -3,19 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO básico -->
     <title>Daniel Diederichsen de Brito | Desenvolvedor & Gestor de Projetos</title>
+    <meta name="description" content="Daniel Diederichsen de Brito une gestão de projetos e inteligência artificial. Desenvolvimento web, automação com IA e liderança no PMI Goiás.">
+    <meta name="author" content="Daniel Diederichsen de Brito">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="canonical" href="https://danieldbrito.com.br/">
+
+    <!-- Favicon e manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Daniel Diederichsen de Brito">
+    <meta property="og:title" content="Daniel Diederichsen de Brito | Desenvolvedor & Gestor de Projetos">
+    <meta property="og:description" content="Unindo gestão de projetos e inteligência artificial. Desenvolvimento web, automação com IA e liderança no PMI Goiás.">
+    <meta property="og:url" content="https://danieldbrito.com.br/">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:image" content="https://danieldbrito.com.br/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daniel Diederichsen de Brito | Desenvolvedor & Gestor de Projetos">
+    <meta name="twitter:description" content="Unindo gestão de projetos e inteligência artificial. Desenvolvimento web, automação com IA e liderança no PMI Goiás.">
+    <meta name="twitter:image" content="https://danieldbrito.com.br/og-image.jpg">
+
+    <!-- Pré-conexão com as CDNs de fontes e scripts (performance) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Fonte Inter (link não-bloqueante em vez de @import no CSS) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <!-- Carrega o Tailwind CSS para o design -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carrega a biblioteca de ícones Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  // Adicione esta linha para o Lucide "encontrar" seus ícones
-  lucide.createIcons();
-</script>
+    <!-- Carrega a biblioteca de ícones Lucide (inicializada no fim do body) -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Dados estruturados (Schema.org Person) para rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Daniel Diederichsen de Brito",
+      "url": "https://danieldbrito.com.br/",
+      "jobTitle": "Desenvolvedor e Gestor de Projetos",
+      "description": "Profissional na interseção entre tecnologia e liderança, com foco em inteligência artificial, desenvolvimento web e gestão de projetos.",
+      "knowsAbout": ["Inteligência Artificial", "Gestão de Projetos", "Desenvolvimento Web", "Liderança"],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "PMI Goiás"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/danieldbrito",
+        "https://github.com/danieldb007"
+      ]
+    }
+    </script>
+
     <style>
-        /* Fonte limpa e moderna */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
@@ -44,6 +97,7 @@
 <body class="antialiased selection:bg-blue-200 selection:text-blue-900">
 
     <!-- Navegação / Cabeçalho -->
+    <header>
     <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -59,13 +113,16 @@
                 </div>
                 <!-- Botão Menu Mobile -->
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-600 hover:text-blue-600 focus:outline-none">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    <button class="text-gray-600 hover:text-blue-600 focus:outline-none" aria-label="Abrir menu de navegação">
+                        <i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
+    </header>
+
+    <main>
 
     <!-- Seção Hero (Apresentação Principal) -->
     <section id="sobre" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
@@ -79,23 +136,23 @@
             </p>
             <div class="flex justify-center md:justify-start gap-4 flex-wrap">
                 <a href="#projetos" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm">
-                    Ver Projetos <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    Ver Projetos <i data-lucide="arrow-down" class="w-4 h-4" aria-hidden="true"></i>
                 </a>
                 <a href="#lideranca" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm">
                     Voluntariado
                 </a>
                 <!-- Link do LinkedIn em destaque no topo -->
                 <a href="https://www.linkedin.com/in/danieldbrito" target="_blank" rel="noopener noreferrer" class="bg-[#0A66C2] hover:bg-[#004182] text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i> Conectar
+                    <i data-lucide="linkedin" class="w-5 h-5" aria-hidden="true"></i> Conectar
                 </a>
             </div>
         </div>
         <div class="md:w-2/5 flex justify-center">
             <!-- Placeholder da Foto -->
             <div class="w-64 h-64 md:w-80 md:h-80 bg-gray-200 rounded-full border-4 border-white shadow-xl overflow-hidden flex items-center justify-center relative">
-                <i data-lucide="user" class="w-32 h-32 text-gray-400"></i>
-                <!-- Você pode substituir o ícone acima pela sua foto usando a tag img abaixo -->
-                <!-- <img src="sua-foto.jpg" alt="Daniel" class="w-full h-full object-cover"> -->
+                <i data-lucide="user" class="w-32 h-32 text-gray-400" aria-hidden="true"></i>
+                <!-- Para usar sua foto, troque o ícone acima pela tag img abaixo (ideal: imagem quadrada) -->
+                <!-- <img src="/perfil.jpg" alt="Foto de Daniel Diederichsen de Brito" width="320" height="320" loading="lazy" class="w-full h-full object-cover"> -->
             </div>
         </div>
     </section>
@@ -105,10 +162,10 @@
         <div class="max-w-6xl mx-auto px-4 text-center">
             <p class="text-sm font-medium text-gray-400 uppercase tracking-widest mb-6">Minha Expertise</p>
             <div class="flex flex-wrap justify-center gap-8 items-center text-gray-500">
-                <span class="flex items-center gap-2 font-medium"><i data-lucide="brain-circuit" class="w-5 h-5"></i> IA & Automação</span>
-                <span class="flex items-center gap-2 font-medium"><i data-lucide="code-2" class="w-5 h-5"></i> Desenvolvimento Web</span>
-                <span class="flex items-center gap-2 font-medium"><i data-lucide="kanban-square" class="w-5 h-5"></i> Gestão de Projetos</span>
-                <span class="flex items-center gap-2 font-medium"><i data-lucide="users" class="w-5 h-5"></i> Liderança & Voluntariado</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="brain-circuit" class="w-5 h-5" aria-hidden="true"></i> IA & Automação</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="code-2" class="w-5 h-5" aria-hidden="true"></i> Desenvolvimento Web</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="kanban-square" class="w-5 h-5" aria-hidden="true"></i> Gestão de Projetos</span>
+                <span class="flex items-center gap-2 font-medium"><i data-lucide="users" class="w-5 h-5" aria-hidden="true"></i> Liderança & Voluntariado</span>
             </div>
         </div>
     </section>
@@ -128,7 +185,7 @@
                     <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">IA Aplicada</span>
                 </div>
                 <div class="h-48 bg-gray-900 relative flex items-center justify-center overflow-hidden">
-                    <i data-lucide="search-check" class="w-16 h-16 text-blue-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    <i data-lucide="search-check" class="w-16 h-16 text-blue-400 group-hover:scale-110 transition-transform duration-500" aria-hidden="true"></i>
                 </div>
                 <div class="p-6 flex-1 flex flex-col">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Fomento Fácil</h3>
@@ -140,7 +197,7 @@
                         <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Sistema Dinâmico</span>
                     </div>
                     <a href="https://fomentofacil.com.br" target="_blank" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
-                        Visitar Fomento Fácil <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        Visitar Fomento Fácil <i data-lucide="external-link" class="w-4 h-4 ml-1" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -148,7 +205,7 @@
             <!-- PROJETO 2: Website 1 -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col">
                 <div class="h-48 bg-gray-100 relative flex items-center justify-center overflow-hidden border-b border-gray-200">
-                    <i data-lucide="layout" class="w-16 h-16 text-gray-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    <i data-lucide="layout" class="w-16 h-16 text-gray-400 group-hover:scale-110 transition-transform duration-500" aria-hidden="true"></i>
                 </div>
                 <div class="p-6 flex-1 flex flex-col">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Teodora Estephan</h3>
@@ -160,7 +217,7 @@
                         <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">UX/UI</span>
                     </div>
                     <a href="https://teodoraestephan.com.br" target="_blank" class="inline-flex items-center text-gray-600 font-semibold hover:text-gray-900 transition-colors">
-                        Acessar Site <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        Acessar Site <i data-lucide="external-link" class="w-4 h-4 ml-1" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -168,7 +225,7 @@
             <!-- PROJETO 3: Website 2 -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col">
                 <div class="h-48 bg-gray-100 relative flex items-center justify-center overflow-hidden border-b border-gray-200">
-                    <i data-lucide="monitor-smartphone" class="w-16 h-16 text-gray-400 group-hover:scale-110 transition-transform duration-500"></i>
+                    <i data-lucide="monitor-smartphone" class="w-16 h-16 text-gray-400 group-hover:scale-110 transition-transform duration-500" aria-hidden="true"></i>
                 </div>
                 <div class="p-6 flex-1 flex flex-col">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Eletrique</h3>
@@ -180,7 +237,7 @@
                         <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Otimização</span>
                     </div>
                     <a href="https://eletrique.com.br" target="_blank" class="inline-flex items-center text-gray-600 font-semibold hover:text-gray-900 transition-colors">
-                        Acessar Site <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        Acessar Site <i data-lucide="external-link" class="w-4 h-4 ml-1" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -256,21 +313,21 @@
                             
                             <div class="space-y-3">
                                 <div class="bg-gray-900/80 p-3 rounded-lg border border-gray-700 flex items-start gap-3">
-                                    <div class="bg-blue-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i></div>
+                                    <div class="bg-blue-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400" aria-hidden="true"></i></div>
                                     <div>
                                         <span class="block font-semibold text-gray-200 text-sm">Mentoring, Webinar e GP na Prática</span>
                                         <span class="text-xs text-gray-500">Supervisão e suporte a 3 projetos ativos fundamentais do Capítulo.</span>
                                     </div>
                                 </div>
                                 <div class="bg-gray-900/80 p-3 rounded-lg border border-gray-700 flex items-start gap-3">
-                                    <div class="bg-orange-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="flame" class="w-4 h-4 text-orange-400"></i></div>
+                                    <div class="bg-orange-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="flame" class="w-4 h-4 text-orange-400" aria-hidden="true"></i></div>
                                     <div>
                                         <span class="block font-semibold text-gray-200 text-sm">Jornada de Gestão de Projetos - MT</span>
                                         <span class="text-xs text-gray-500">Projeto "no forno", em estruturação avançada para lançamento no Mato Grosso.</span>
                                     </div>
                                 </div>
                                 <div class="bg-gray-900/80 p-3 rounded-lg border border-gray-700 flex items-start gap-3">
-                                    <div class="bg-purple-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="map" class="w-4 h-4 text-purple-400"></i></div>
+                                    <div class="bg-purple-900/50 p-1.5 rounded-md mt-0.5"><i data-lucide="map" class="w-4 h-4 text-purple-400" aria-hidden="true"></i></div>
                                     <div>
                                         <span class="block font-semibold text-gray-200 text-sm">Novas Estratégias</span>
                                         <span class="text-xs text-gray-500">Mapeamento e planejamento contínuo de futuras ações para o Capítulo.</span>
@@ -281,7 +338,7 @@
                     </div>
                     <!-- Ícone Central -->
                     <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 md:translate-y-0 top-0 md:top-1/2 w-14 h-14 bg-emerald-600 rounded-full border-4 border-gray-900 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.5)] z-20">
-                        <i data-lucide="star" class="w-6 h-6 text-white"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-white" aria-hidden="true"></i>
                     </div>
                     <div class="md:w-1/2 hidden md:block"></div>
                 </div>
@@ -289,6 +346,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Rodapé e Contato - Atualizado com WhatsApp e LinkedIn -->
     <footer id="contato" class="bg-white border-t border-gray-100 py-16">
@@ -301,7 +360,7 @@
             <!-- Botão Gigante do WhatsApp -->
             <a href="https://wa.me/5562999186800" target="_blank" rel="noopener noreferrer" 
                class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-12 w-full sm:w-auto text-lg">
-                <i data-lucide="message-circle" class="w-7 h-7"></i>
+                <i data-lucide="message-circle" class="w-7 h-7" aria-hidden="true"></i>
                 Chamar no WhatsApp
             </a>
 
@@ -309,12 +368,12 @@
                 <!-- Ícone do LinkedIn -->
                 <a href="https://www.linkedin.com/in/danieldbrito" target="_blank" rel="noopener noreferrer" 
                    class="p-4 bg-blue-50 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white rounded-full transition-colors group" aria-label="Perfil no LinkedIn">
-                    <i data-lucide="linkedin" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <i data-lucide="linkedin" class="w-6 h-6 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                 </a>
-                <!-- Ícone do GitHub (Deixei preparado caso queira usar) -->
-                <a href="https://github.com/seugithub" target="_blank" rel="noopener noreferrer" 
+                <!-- Ícone do GitHub -->
+                <a href="https://github.com/danieldb007" target="_blank" rel="noopener noreferrer"
                    class="p-4 bg-gray-50 text-gray-700 hover:bg-gray-900 hover:text-white rounded-full transition-colors group" aria-label="Perfil no GitHub">
-                    <i data-lucide="github" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <i data-lucide="github" class="w-6 h-6 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
                 </a>
             </div>
             
@@ -326,7 +385,8 @@
 
     <!-- Script para inicializar os ícones e funcionalidades simples -->
     <script>
-        lucide.createIcons();
+        // Inicializa os ícones após o carregamento do script Lucide (carregado com defer)
+        document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
 
         // Efeito de sombra no menu ao rolar
         window.addEventListener('scroll', () => {
@@ -340,33 +400,5 @@
             }
         });
     </script>
-<div id="claude-container" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc;">
-    <h3>Fale com o Claude</h3>
-    <input type="text" id="userInput" placeholder="Digite sua pergunta aqui..." style="width: 70%;">
-    <button onclick="perguntarAoClaude()">Enviar</button>
-    <p id="respostaClaude" style="margin-top: 10px; font-weight: bold;"></p>
-</div>
-
-<script>
-async function perguntarAoClaude() {
-    const texto = document.getElementById('userInput').value;
-    const respostaDisplay = document.getElementById('respostaClaude');
-    
-    respostaDisplay.innerText = "Processando...";
-
-    try {
-        const response = await fetch('http://34.121.124.208:3000/api/claude', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mensagem: texto })
-        });
-        const data = await response.json();
-        respostaDisplay.innerText = 'Claude diz: ' + data.resposta;
-    } catch (error) {
-        respostaDisplay.innerText = 'Erro ao conectar com o servidor.';
-        console.error(error);
-    }
-}
-</script>
 </body>
 </html>
