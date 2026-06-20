@@ -96,7 +96,7 @@
                             id="btn-sair"
                             onclick="sessionStorage.removeItem('bap_auth'); location.reload();"
                             class="text-xs font-medium px-2 py-0.5 rounded-full bg-slate-700/50 text-slate-400 border border-slate-600/40 hover:bg-slate-700 hover:text-slate-200 transition-colors flex items-center gap-1"
-                            title="Encerrar sessão"
+                            aria-label="Encerrar sessão"
                         >
                             <i data-lucide="log-out" class="w-3 h-3" aria-hidden="true"></i> Sair
                         </button>
@@ -113,7 +113,7 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" aria-label="Painel de KPIs e Evolução">
 
         <!-- Estado de carregamento / erro -->
         <div id="estado" class="space-y-12" aria-busy="true" aria-label="Carregando painel…">
@@ -196,7 +196,7 @@
                 </h2>
                 <p class="text-sm text-slate-400 mb-5">Pontuação recalculada a partir dos critérios e pesos.</p>
                 <div class="card rounded-2xl p-4 mb-5">
-                    <div id="chart-ranking" style="height:230px"></div>
+                    <div id="chart-ranking" role="img" aria-label="Ranking das iniciativas por pontuação" style="height:230px"></div>
                 </div>
                 <div id="iniciativas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
             </section>
@@ -216,7 +216,7 @@
                     </div>
                     <div class="card rounded-2xl p-4">
                         <p class="text-sm font-semibold text-slate-300 mb-1">Valor × Esforço</p>
-                        <div id="chart-scatter" style="height:260px"></div>
+                        <div id="chart-scatter" role="img" aria-label="Dispersão valor × esforço das iniciativas" style="height:260px"></div>
                     </div>
                 </div>
             </section>
@@ -378,7 +378,7 @@
         function gaugeCard(k){
             return `<div class="card rounded-2xl p-4 flex flex-col">
                 <p class="text-[13px] font-semibold text-slate-200 leading-snug min-h-[34px]">${k.nome}</p>
-                <div id="g-${k.id}" style="height:140px"></div>
+                <div id="g-${k.id}" role="img" aria-label="Gauge de ${k.nome}: valor atual ${k.atual}${k.unidade||''}" style="height:140px"></div>
                 <div class="flex items-center justify-between text-xs">
                     <span class="text-slate-400">Meta: <span class="font-semibold ${corToClass(kpiCor(k))}">${k.meta.rotulo}</span></span>
                     <span class="text-slate-500">${k.frequencia}</span>
@@ -392,7 +392,7 @@
                     <p class="text-[13px] font-semibold text-slate-200 leading-snug">${k.nome}</p>
                     <span class="text-xs font-semibold ${corToClass(kpiCor({atual:k.medicoes[k.medicoes.length-1].valor, meta:k.meta}))}">${fmtNum(k.medicoes[k.medicoes.length-1].valor, k.unidade)}</span>
                 </div>
-                <div id="l-${k.id}" style="height:170px"></div>
+                <div id="l-${k.id}" role="img" aria-label="Evolução de ${k.nome}" style="height:170px"></div>
                 <p class="text-[11px] text-slate-500">Meta ${k.meta.rotulo} · ${k.frequencia} · ${k.responsavel}</p>
             </div>`;
         }
@@ -550,7 +550,7 @@
                             <div class="bg-slate-800/50 border border-slate-700/50 rounded-lg px-3 py-2">
                                 <span class="text-xs font-bold text-sky-400">${i.id}</span>
                                 <span class="text-sm text-slate-300"> ${i.nome}</span>
-                            </div>`).join('') : '<p class="text-xs text-slate-600 italic">—</p>'}
+                            </div>`).join('') : '<p class="text-xs text-slate-500 italic">—</p>'}
                     </div>
                 </div>`).join('');
 
