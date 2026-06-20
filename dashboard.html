@@ -25,14 +25,18 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Tailwind via CDN: não suporta SRI (conteúdo dinâmico) -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ECharts 5.6.0 — SRI fixado na versão -->
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"
             defer
             crossorigin="anonymous"
             integrity="sha384-pPi0zxBAoDu6+JXW/C68UZLvBUUtU+7zonhif43rqj7pxsGyqyqzcian2Rj37Rss"></script>
+
+    <!-- Lucide Icons 1.21.0 — SRI fixado na versão -->
     <script src="https://unpkg.com/lucide@1.21.0/dist/umd/lucide.min.js"
             defer
             crossorigin="anonymous"
@@ -54,11 +58,11 @@
         <div class="w-full max-w-sm mx-4">
             <div class="card rounded-2xl p-8 shadow-2xl">
                 <div class="text-center mb-8">
-                    <span class="text-3xl font-black text-sky-400 leading-none">◆</span>
+                    <span class="text-3xl font-black text-sky-400 leading-none" aria-hidden="true">◆</span>
                     <h2 id="auth-title" class="text-xl font-bold text-white mt-3">Business Agility Portal</h2>
                     <p class="text-sm text-slate-400 mt-1">Padrão Diamante · Área restrita</p>
                 </div>
-                <div id="auth-error" class="hidden mb-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2 text-center" role="alert">
+                <div id="auth-error" content="hidden mb-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2 text-center" class="hidden mb-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2 text-center" role="alert">
                     Senha incorreta. Tente novamente.
                 </div>
                 <form id="auth-form" novalidate>
@@ -115,138 +119,256 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" aria-label="Painel de KPIs e Evolução">
 
-        <!-- Estado de carregamento / erro -->
-        <div id="estado" class="space-y-12" aria-busy="true" aria-label="Carregando painel…">
-
-            <!-- Skeleton: cartões de resumo -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-2/3 mb-2"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-1/2 mb-2"></div><div class="h-3 bg-slate-800 rounded w-4/5"></div></div>
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-3/5 mb-2"></div><div class="h-3 bg-slate-800 rounded w-2/3"></div></div>
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-2/4 mb-2"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
-            </div>
-
-            <!-- Skeleton: KPIs estratégicos -->
-            <div>
-                <div class="h-5 bg-slate-800 rounded w-44 mb-5 animate-pulse"></div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-3/4 mb-3"></div><div class="h-[140px] bg-slate-800 rounded-xl mb-3"></div><div class="h-3 bg-slate-800 rounded w-1/2"></div></div>
-                    <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-2/3 mb-3"></div><div class="h-[140px] bg-slate-800 rounded-xl mb-3"></div><div class="h-3 bg-slate-800 rounded w-2/3"></div></div>
-                    <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-3/4 mb-3"></div><div class="h-[140px] bg-slate-800 rounded-xl mb-3"></div><div class="h-3 bg-slate-800 rounded w-1/2"></div></div>
-                    <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-1/2 mb-3"></div><div class="h-[140px] bg-slate-800 rounded-xl mb-3"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
-                </div>
-            </div>
-
-            <!-- Skeleton: gráfico de ranking -->
-            <div>
-                <div class="h-5 bg-slate-800 rounded w-52 mb-5 animate-pulse"></div>
-                <div class="card rounded-2xl p-4 animate-pulse">
-                    <div class="h-[230px] bg-slate-800 rounded-xl"></div>
-                </div>
-            </div>
-
-            <!-- Skeleton: iniciativas -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="flex justify-between mb-3"><div class="h-4 bg-slate-700 rounded w-8"></div><div class="h-4 bg-slate-800 rounded w-20"></div></div><div class="h-5 bg-slate-700 rounded w-3/4 mb-2"></div><div class="h-3 bg-slate-800 rounded w-1/3 mb-3"></div><div class="h-12 bg-slate-800 rounded mb-4"></div><div class="h-2 bg-slate-800 rounded w-full"></div></div>
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="flex justify-between mb-3"><div class="h-4 bg-slate-700 rounded w-8"></div><div class="h-4 bg-slate-800 rounded w-24"></div></div><div class="h-5 bg-slate-700 rounded w-2/3 mb-2"></div><div class="h-3 bg-slate-800 rounded w-1/4 mb-3"></div><div class="h-12 bg-slate-800 rounded mb-4"></div><div class="h-2 bg-slate-800 rounded w-full"></div></div>
-                <div class="card rounded-2xl p-5 animate-pulse"><div class="flex justify-between mb-3"><div class="h-4 bg-slate-700 rounded w-8"></div><div class="h-4 bg-slate-800 rounded w-16"></div></div><div class="h-5 bg-slate-700 rounded w-4/5 mb-2"></div><div class="h-3 bg-slate-800 rounded w-2/5 mb-3"></div><div class="h-12 bg-slate-800 rounded mb-4"></div><div class="h-2 bg-slate-800 rounded w-full"></div></div>
-            </div>
-
+        <!-- Navegação por abas -->
+        <div class="flex items-center gap-0 border-b border-slate-800 mb-8" role="tablist" aria-label="Seções do painel">
+            <button role="tab" id="tab-kpis-btn" aria-controls="tab-kpis" aria-selected="true"
+                    class="px-4 py-2.5 text-sm font-semibold text-sky-400 border-b-2 border-sky-400 -mb-px flex items-center gap-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                <i data-lucide="layout-dashboard" class="w-4 h-4" aria-hidden="true"></i>
+                <span class="hidden sm:inline">KPIs &amp; Portfólio</span><span class="sm:hidden">KPIs</span>
+            </button>
+            <button role="tab" id="tab-grafana-btn" aria-controls="tab-grafana" aria-selected="false"
+                    class="px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent -mb-px flex items-center gap-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                <i data-lucide="activity" class="w-4 h-4" aria-hidden="true"></i> Grafana
+            </button>
+            <button role="tab" id="tab-analytics-btn" aria-controls="tab-analytics" aria-selected="false"
+                    class="px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-slate-200 border-b-2 border-transparent -mb-px flex items-center gap-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                <i data-lucide="bar-chart-2" class="w-4 h-4" aria-hidden="true"></i> Analytics
+            </button>
         </div>
 
-        <div id="conteudo" class="hidden space-y-12">
+        <!-- ━━━━━━━━━━━━ ABA 1 · KPIs & Portfólio ━━━━━━━━━━━━ -->
+        <div id="tab-kpis" role="tabpanel" aria-labelledby="tab-kpis-btn">
 
-            <!-- Aviso de dados de exemplo -->
-            <div id="aviso-seed" class="hidden text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-2 flex items-center gap-2">
-                <i data-lucide="info" class="w-4 h-4 flex-shrink-0" aria-hidden="true"></i>
-                <span></span>
+            <!-- Estado: skeleton de carregamento -->
+            <div id="estado" class="space-y-12" aria-busy="true" aria-label="Carregando painel…">
+                <!-- Skeleton: cartões de resumo -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-2/3 mb-2"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
+                    <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-2/3 mb-2"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
+                    <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-2/3 mb-2"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
+                    <div class="card rounded-2xl p-5 animate-pulse"><div class="w-5 h-5 bg-slate-700 rounded mb-3"></div><div class="h-7 bg-slate-700 rounded w-2/3 mb-2"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div></div>
+                </div>
+                <!-- Skeleton: KPIs estratégicos -->
+                <div>
+                    <div class="h-6 bg-slate-800 rounded w-48 mb-2 animate-pulse"></div>
+                    <div class="h-3 bg-slate-800/60 rounded w-64 mb-5 animate-pulse"></div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-3/4 mb-3"></div><div class="h-[140px] bg-slate-800 rounded"></div><div class="h-3 bg-slate-800 rounded w-1/2 mt-3"></div></div>
+                        <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-3/4 mb-3"></div><div class="h-[140px] bg-slate-800 rounded"></div><div class="h-3 bg-slate-800 rounded w-1/2 mt-3"></div></div>
+                        <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-3/4 mb-3"></div><div class="h-[140px] bg-slate-800 rounded"></div><div class="h-3 bg-slate-800 rounded w-1/2 mt-3"></div></div>
+                        <div class="card rounded-2xl p-4 animate-pulse"><div class="h-3 bg-slate-700 rounded w-3/4 mb-3"></div><div class="h-[140px] bg-slate-800 rounded"></div><div class="h-3 bg-slate-800 rounded w-1/2 mt-3"></div></div>
+                    </div>
+                </div>
+                <!-- Skeleton: gráfico de ranking -->
+                <div>
+                    <div class="h-6 bg-slate-800 rounded w-56 mb-2 animate-pulse"></div>
+                    <div class="h-3 bg-slate-800/60 rounded w-72 mb-5 animate-pulse"></div>
+                    <div class="card rounded-2xl p-4 animate-pulse"><div class="h-[230px] bg-slate-800 rounded"></div></div>
+                </div>
+                <!-- Skeleton: iniciativas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="card rounded-2xl p-5 animate-pulse space-y-3"><div class="h-4 bg-slate-700 rounded w-1/3"></div><div class="h-5 bg-slate-700 rounded w-4/5"></div><div class="h-3 bg-slate-800 rounded w-full"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div><div class="h-2 bg-slate-800 rounded-full w-full mt-4"></div></div>
+                    <div class="card rounded-2xl p-5 animate-pulse space-y-3"><div class="h-4 bg-slate-700 rounded w-1/3"></div><div class="h-5 bg-slate-700 rounded w-4/5"></div><div class="h-3 bg-slate-800 rounded w-full"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div><div class="h-2 bg-slate-800 rounded-full w-full mt-4"></div></div>
+                    <div class="card rounded-2xl p-5 animate-pulse space-y-3"><div class="h-4 bg-slate-700 rounded w-1/3"></div><div class="h-5 bg-slate-700 rounded w-4/5"></div><div class="h-3 bg-slate-800 rounded w-full"></div><div class="h-3 bg-slate-800 rounded w-3/4"></div><div class="h-2 bg-slate-800 rounded-full w-full mt-4"></div></div>
+                </div>
             </div>
 
-            <!-- Cartões de resumo -->
-            <section>
-                <div id="resumo" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
-            </section>
+            <!-- Conteúdo real (oculto até carregamento) -->
+            <div id="conteudo" class="hidden space-y-12">
 
-            <!-- KPIs estratégicos -->
-            <section>
-                <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                    <i data-lucide="target" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> KPIs estratégicos
-                </h2>
-                <p class="text-sm text-slate-400 mb-5">Fonte: Business Agility — Portfólio Estratégico.</p>
-                <div id="gauges-estrategico" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-                <h3 class="text-sm font-semibold text-slate-300 mt-7 mb-3 flex items-center gap-2">
-                    <i data-lucide="trending-up" class="w-4 h-4 text-emerald-400" aria-hidden="true"></i> Evolução no tempo
-                </h3>
-                <div id="linhas-estrategico" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
-            </section>
-
-            <!-- Métricas de produto -->
-            <section>
-                <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                    <i data-lucide="gauge" class="w-5 h-5 text-purple-400" aria-hidden="true"></i> Métricas de produto
-                </h2>
-                <p class="text-sm text-slate-400 mb-5">Fonte: Visão do Produto — Business Agility Portal.</p>
-                <div id="gauges-produto" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-            </section>
-
-            <!-- Iniciativas -->
-            <section>
-                <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                    <i data-lucide="layout-grid" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> Iniciativas do portfólio
-                </h2>
-                <p class="text-sm text-slate-400 mb-5">Pontuação recalculada a partir dos critérios e pesos.</p>
-                <div class="card rounded-2xl p-4 mb-5">
-                    <div id="chart-ranking" role="img" aria-label="Ranking das iniciativas por pontuação" style="height:230px"></div>
+                <!-- Aviso de dados de exemplo -->
+                <div id="aviso-seed" class="hidden text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-2 flex items-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4 flex-shrink-0" aria-hidden="true"></i>
+                    <span></span>
                 </div>
-                <div id="iniciativas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-            </section>
 
-            <!-- Matriz de priorização + valor x esforço -->
-            <section>
-                <h2 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
-                    <i data-lucide="table-2" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> Matriz de priorização
-                </h2>
-                <p id="matriz-legenda" class="text-sm text-slate-400 mb-5"></p>
-                <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
-                    <div class="xl:col-span-2 overflow-x-auto card rounded-2xl">
-                        <table class="w-full text-sm">
-                            <thead id="matriz-head" class="bg-slate-800/70 text-slate-200"></thead>
-                            <tbody id="matriz-body" class="divide-y divide-slate-800"></tbody>
-                        </table>
+                <!-- Cartões de resumo -->
+                <section aria-label="Resumo executivo">
+                    <div id="resumo" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+                </section>
+
+                <!-- KPIs estratégicos -->
+                <section aria-labelledby="sec-kpis-estrategicos">
+                    <h2 id="sec-kpis-estrategicos" class="text-xl font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="target" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> KPIs estratégicos
+                    </h2>
+                    <p class="text-sm text-slate-400 mb-5">Fonte: Business Agility — Portfólio Estratégico.</p>
+                    <div id="gauges-estrategico" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                    <h3 class="text-sm font-semibold text-slate-300 mt-7 mb-3 flex items-center gap-2">
+                        <i data-lucide="trending-up" class="w-4 h-4 text-emerald-400" aria-hidden="true"></i> Evolução no tempo
+                    </h3>
+                    <div id="linhas-estrategico" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+                </section>
+
+                <!-- Métricas de produto -->
+                <section aria-labelledby="sec-metricas-produto">
+                    <h2 id="sec-metricas-produto" class="text-xl font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="gauge" class="w-5 h-5 text-purple-400" aria-hidden="true"></i> Métricas de produto
+                    </h2>
+                    <p class="text-sm text-slate-400 mb-5">Fonte: Visão do Produto — Business Agility Portal.</p>
+                    <div id="gauges-produto" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                </section>
+
+                <!-- Iniciativas -->
+                <section aria-labelledby="sec-iniciativas">
+                    <h2 id="sec-iniciativas" class="text-xl font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="layout-grid" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> Iniciativas do portfólio
+                    </h2>
+                    <p class="text-sm text-slate-400 mb-5">Pontuação recalculada a partir dos critérios e pesos.</p>
+                    <div class="card rounded-2xl p-4 mb-5">
+                        <div id="chart-ranking" role="img" aria-label="Gráfico de barras: ranking de iniciativas por pontuação" style="height:230px"></div>
                     </div>
-                    <div class="card rounded-2xl p-4">
-                        <p class="text-sm font-semibold text-slate-300 mb-1">Valor × Esforço</p>
-                        <div id="chart-scatter" role="img" aria-label="Dispersão valor × esforço das iniciativas" style="height:260px"></div>
+                    <div id="iniciativas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+                </section>
+
+                <!-- Matriz de priorização + valor x esforço -->
+                <section aria-labelledby="sec-matriz">
+                    <h2 id="sec-matriz" class="text-xl font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="table-2" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> Matriz de priorização
+                    </h2>
+                    <p id="matriz-legenda" class="text-sm text-slate-400 mb-5"></p>
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
+                        <div class="xl:col-span-2 overflow-x-auto card rounded-2xl">
+                            <table class="w-full text-sm">
+                                <thead id="matriz-head" class="bg-slate-800/70 text-slate-200"></thead>
+                                <tbody id="matriz-body" class="divide-y divide-slate-800"></tbody>
+                            </table>
+                        </div>
+                        <div class="card rounded-2xl p-4">
+                            <p class="text-sm font-semibold text-slate-300 mb-1">Valor × Esforço</p>
+                            <div id="chart-scatter" role="img" aria-label="Gráfico de dispersão: valor versus esforço das iniciativas" style="height:260px"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Roadmap -->
-            <section>
-                <h2 class="text-xl font-bold text-white mb-5 flex items-center gap-2">
-                    <i data-lucide="waves" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> Roadmap
-                </h2>
-                <h3 class="text-sm font-semibold text-slate-300 mb-3">Ondas do portfólio (estratégia)</h3>
-                <div id="roadmap" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5"></div>
-                <h3 class="text-sm font-semibold text-slate-300 mt-7 mb-3">Fases do produto</h3>
-                <div id="fases" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
-            </section>
+                <!-- Roadmap -->
+                <section aria-labelledby="sec-roadmap">
+                    <h2 id="sec-roadmap" class="text-xl font-bold text-white mb-5 flex items-center gap-2">
+                        <i data-lucide="waves" class="w-5 h-5 text-sky-400" aria-hidden="true"></i> Roadmap
+                    </h2>
+                    <h3 class="text-sm font-semibold text-slate-300 mb-3">Ondas do portfólio (estratégia)</h3>
+                    <div id="roadmap" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5"></div>
+                    <h3 class="text-sm font-semibold text-slate-300 mt-7 mb-3">Fases do produto</h3>
+                    <div id="fases" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+                </section>
 
-            <!-- Riscos -->
-            <section>
-                <h2 class="text-xl font-bold text-white mb-5 flex items-center gap-2">
-                    <i data-lucide="shield-alert" class="w-5 h-5 text-rose-400" aria-hidden="true"></i> Riscos do portfólio
-                </h2>
-                <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
-                    <div class="card rounded-2xl p-4">
-                        <p class="text-sm font-semibold text-slate-300 mb-3">Matriz impacto × probabilidade</p>
-                        <div id="risco-matriz"></div>
+                <!-- Riscos -->
+                <section aria-labelledby="sec-riscos">
+                    <h2 id="sec-riscos" class="text-xl font-bold text-white mb-5 flex items-center gap-2">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-rose-400" aria-hidden="true"></i> Riscos do portfólio
+                    </h2>
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
+                        <div class="card rounded-2xl p-4">
+                            <p class="text-sm font-semibold text-slate-300 mb-3">Matriz impacto × probabilidade</p>
+                            <div id="risco-matriz"></div>
+                        </div>
+                        <div id="riscos" class="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
                     </div>
-                    <div id="riscos" class="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-                </div>
-            </section>
+                </section>
 
+            </div>
         </div>
+
+        <!-- ━━━━━━━━━━━━ ABA 2 · Grafana ━━━━━━━━━━━━ -->
+        <div id="tab-grafana" role="tabpanel" aria-labelledby="tab-grafana-btn" class="hidden">
+
+            <!-- iframe (visível quando GRAFANA_URL estiver configurado) -->
+            <iframe id="grafana-frame"
+                    class="hidden w-full rounded-2xl border border-slate-800"
+                    style="height:680px"
+                    src=""
+                    frameborder="0"
+                    title="Painel Grafana — monitoramento operacional"
+                    allowfullscreen
+                    loading="lazy"></iframe>
+
+            <!-- Card de configuração (visível quando GRAFANA_URL está vazio) -->
+            <div id="grafana-setup" class="max-w-lg mx-auto mt-8">
+                <div class="card rounded-2xl p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-orange-500/15 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="activity" class="w-5 h-5 text-orange-400" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-white">Conectar Grafana</h2>
+                            <p class="text-sm text-slate-400">Monitoramento operacional em tempo real</p>
+                        </div>
+                    </div>
+                    <ol class="space-y-4 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">1</span>
+                            <span>Suba uma instância do Grafana (local com Docker ou serviço cloud como <strong class="text-slate-200">Grafana Cloud</strong>).</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">2</span>
+                            <span>No arquivo <code class="bg-slate-800 px-1 rounded text-xs">grafana.ini</code>, habilite o embedding:</span>
+                        </li>
+                    </ol>
+                    <pre class="mt-2 mb-4 ml-9 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-xs text-slate-300 overflow-x-auto"><code>[security]
+allow_embedding = true</code></pre>
+                    <ol class="space-y-4 text-sm text-slate-300" start="3">
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
+                            <span>Abra o dashboard desejado, clique em <strong class="text-slate-200">Share → Embed</strong> e copie a URL (adicione <code class="bg-slate-800 px-1 rounded text-xs">?kiosk</code> ao final para ocultar o menu).</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">4</span>
+                            <span>Cole a URL na constante <code class="bg-slate-800 px-1 rounded text-xs">GRAFANA_URL</code> no topo do bloco <code class="bg-slate-800 px-1 rounded text-xs">&lt;script&gt;</code> deste arquivo:</span>
+                        </li>
+                    </ol>
+                    <pre class="mt-2 ml-9 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-xs text-slate-300 overflow-x-auto"><code>const GRAFANA_URL = 'https://grafana.meusite.com/d/xyz/painel?orgId=1&kiosk';</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ━━━━━━━━━━━━ ABA 3 · Analytics ━━━━━━━━━━━━ -->
+        <div id="tab-analytics" role="tabpanel" aria-labelledby="tab-analytics-btn" class="hidden">
+
+            <!-- iframe (visível quando ANALYTICS_REPORT_URL estiver configurado) -->
+            <iframe id="analytics-frame"
+                    class="hidden w-full rounded-2xl border border-slate-800"
+                    style="height:680px"
+                    src=""
+                    frameborder="0"
+                    title="Relatório Google Analytics — Business Agility Portal (G-MF2G51WNJ7)"
+                    allowfullscreen
+                    loading="lazy"></iframe>
+
+            <!-- Card de configuração (visível quando ANALYTICS_REPORT_URL está vazio) -->
+            <div id="analytics-setup" class="max-w-lg mx-auto mt-8">
+                <div class="card rounded-2xl p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-blue-400" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-white">Conectar Google Analytics</h2>
+                            <p class="text-sm text-slate-400">Relatório via Looker Studio · <span class="text-slate-500">G-MF2G51WNJ7</span></p>
+                        </div>
+                    </div>
+                    <ol class="space-y-4 text-sm text-slate-300">
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">1</span>
+                            <span>Acesse <strong class="text-slate-200">Looker Studio</strong> (<code class="bg-slate-800 px-1 rounded text-xs">lookerstudio.google.com</code>) com a conta Google associada à propriedade GA4.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">2</span>
+                            <span>Crie um novo relatório e conecte a fonte de dados <strong class="text-slate-200">Google Analytics 4</strong> — selecione a propriedade <code class="bg-slate-800 px-1 rounded text-xs">G-MF2G51WNJ7</code> (<em>danieldbrito.com.br</em>).</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
+                            <span>Quando o relatório estiver pronto, clique em <strong class="text-slate-200">Arquivo → Configurações do relatório</strong> e habilite <em>Incorporar relatório</em>. Em seguida, clique em <strong class="text-slate-200">Compartilhar → Incorporar relatório</strong> e copie a URL do iframe.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold flex items-center justify-center mt-0.5">4</span>
+                            <span>Cole a URL na constante <code class="bg-slate-800 px-1 rounded text-xs">ANALYTICS_REPORT_URL</code> no topo do bloco <code class="bg-slate-800 px-1 rounded text-xs">&lt;script&gt;</code> deste arquivo:</span>
+                        </li>
+                    </ol>
+                    <pre class="mt-2 ml-9 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-xs text-slate-300 overflow-x-auto"><code>const ANALYTICS_REPORT_URL = 'https://lookerstudio.google.com/embed/reporting/abc123/page/...';</code></pre>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs text-slate-500 border-t border-slate-800">
@@ -255,9 +377,24 @@
     </footer>
 
     <script>
-        // ---- Autenticação por senha (hash SHA-256, sessão por aba) ----
-        // Para alterar a senha: gere o hash com `echo -n "nova_senha" | sha256sum`
-        // e substitua a constante AUTH_HASH abaixo.
+        // ════════════════════════════════════════════════════
+        // CONFIGURAÇÃO — edite aqui para ativar os painéis
+        // ════════════════════════════════════════════════════
+
+        // Cole a URL embed do seu dashboard Grafana (com ?kiosk para ocultar menu).
+        // Deixe '' para exibir o guia de configuração.
+        // Exemplo: 'https://grafana.meusite.com/d/xyz/painel?orgId=1&kiosk'
+        const GRAFANA_URL = '';
+
+        // Cole a URL embed do relatório Looker Studio conectado ao GA4 G-MF2G51WNJ7.
+        // Deixe '' para exibir o guia de configuração.
+        // Exemplo: 'https://lookerstudio.google.com/embed/reporting/abc123/page/...'
+        const ANALYTICS_REPORT_URL = '';
+
+        // ════════════════════════════════════════════════════
+        // AUTENTICAÇÃO por senha (hash SHA-256, sessão por aba)
+        // Para alterar: gere o hash com `echo -n "nova_senha" | sha256sum`
+        // ════════════════════════════════════════════════════
         const AUTH_HASH = '04aa33ddd942dfa29ea2da56439dac63e3bb22523e49a69ee7e039132045787f'; // diamante@2026
 
         async function _hashStr(str) {
@@ -274,7 +411,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('auth-form');
-            if (!form) return; // gate já foi removida pelo CSS (sessão ativa)
+            if (!form) return;
             const errEl = document.getElementById('auth-error');
             document.getElementById('auth-password').focus();
 
@@ -293,12 +430,72 @@
             });
         });
 
-        // ---- Gráficos / dashboard ----
+        // ════════════════════════════════════════════════════
+        // NAVEGAÇÃO POR ABAS
+        // ════════════════════════════════════════════════════
+        const TAB_DEFS = [
+            { btn: 'tab-kpis-btn',      panel: 'tab-kpis'      },
+            { btn: 'tab-grafana-btn',   panel: 'tab-grafana'   },
+            { btn: 'tab-analytics-btn', panel: 'tab-analytics' },
+        ];
+        const TAB_BASE = 'px-4 py-2.5 text-sm -mb-px flex items-center gap-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 border-b-2';
+
+        function activateTab(idx) {
+            TAB_DEFS.forEach(({ btn, panel }, i) => {
+                const active = i === idx;
+                const b = document.getElementById(btn);
+                b.setAttribute('aria-selected', String(active));
+                b.className = TAB_BASE + (active
+                    ? ' font-semibold text-sky-400 border-sky-400'
+                    : ' font-medium text-slate-400 border-transparent hover:text-slate-200');
+                document.getElementById(panel).classList.toggle('hidden', !active);
+            });
+            // Ao voltar para KPIs, força redimensionamento dos gráficos ECharts
+            if (idx === 0) {
+                charts.forEach(c => { try { c.resize(); } catch(e){} });
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wiring das abas
+            TAB_DEFS.forEach(({ btn }, idx) => {
+                document.getElementById(btn).addEventListener('click', () => activateTab(idx));
+            });
+
+            // Teclado: setas esquerda/direita navegam entre abas (WAI-ARIA pattern)
+            document.querySelector('[role="tablist"]').addEventListener('keydown', function(e) {
+                const btns = TAB_DEFS.map(t => document.getElementById(t.btn));
+                const current = btns.findIndex(b => b.getAttribute('aria-selected') === 'true');
+                let next = -1;
+                if (e.key === 'ArrowRight') next = (current + 1) % btns.length;
+                if (e.key === 'ArrowLeft')  next = (current - 1 + btns.length) % btns.length;
+                if (next >= 0) { activateTab(next); btns[next].focus(); e.preventDefault(); }
+            });
+
+            // Configura iframes se as URLs estiverem preenchidas
+            if (GRAFANA_URL) {
+                const fr = document.getElementById('grafana-frame');
+                fr.src = GRAFANA_URL;
+                fr.classList.remove('hidden');
+                document.getElementById('grafana-setup').classList.add('hidden');
+            }
+            if (ANALYTICS_REPORT_URL) {
+                const fr = document.getElementById('analytics-frame');
+                fr.src = ANALYTICS_REPORT_URL;
+                fr.classList.remove('hidden');
+                document.getElementById('analytics-setup').classList.add('hidden');
+            }
+        });
+
+        // ════════════════════════════════════════════════════
+        // GRÁFICOS / ECHARTS
+        // ════════════════════════════════════════════════════
         const charts = [];
         const reg = c => { charts.push(c); return c; };
         window.addEventListener('resize', () => charts.forEach(c => { try { c.resize(); } catch(e){} }));
 
-        // ---- Cores / badges ----
+        // Cores e badges
         const corStatus = {
             "priorizada": "bg-sky-500/15 text-sky-300 border border-sky-500/30",
             "em andamento": "bg-amber-500/15 text-amber-300 border border-amber-500/30",
@@ -310,13 +507,10 @@
         };
         const corImpacto = { "Alto": "bg-rose-500/15 text-rose-300", "Médio": "bg-amber-500/15 text-amber-300", "Baixo": "bg-slate-500/15 text-slate-300" };
         const badge = (txt, classe) => `<span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full ${classe || 'bg-slate-700/40 text-slate-300'}">${txt}</span>`;
-
         const COR = { ok:'#10b981', warn:'#f59e0b', bad:'#f43f5e', info:'#38bdf8', neutral:'#64748b' };
 
-        // ---- Pontuação ----
         const pontuacao = (ini, criterios) => criterios.reduce((s,c) => s + (ini.notas[c.id]||0)*c.peso, 0);
 
-        // ---- Status de KPI ----
         function kpiCor(k){
             const v = k.atual, m = k.meta;
             if(!m) return COR.info;
@@ -328,7 +522,6 @@
         const corToClass = c => c===COR.ok?'text-emerald-400':c===COR.warn?'text-amber-400':c===COR.bad?'text-rose-400':'text-sky-400';
         const fmtNum = (v, u) => (Number.isInteger(v) ? v : (+v).toFixed(2)) + (u||'');
 
-        // ---- Gauge ----
         function makeGauge(el, k){
             const color = kpiCor(k), min = k.min ?? 0, max = k.max ?? 100;
             const c = echarts.init(el);
@@ -347,7 +540,6 @@
             return reg(c);
         }
 
-        // ---- Linha de evolução ----
         function makeLine(el, k){
             const xs = k.medicoes.map(p=>p.data), ys = k.medicoes.map(p=>p.valor);
             const last = ys[ys.length-1], m = k.meta;
@@ -374,7 +566,6 @@
             return reg(c);
         }
 
-        // ---- Cartões de KPI (HTML) ----
         function gaugeCard(k){
             return `<div class="card rounded-2xl p-4 flex flex-col">
                 <p class="text-[13px] font-semibold text-slate-200 leading-snug min-h-[34px]">${k.nome}</p>
@@ -397,7 +588,9 @@
             </div>`;
         }
 
-        // ---- Render principal ----
+        // ════════════════════════════════════════════════════
+        // RENDER PRINCIPAL
+        // ════════════════════════════════════════════════════
         function render(port, kp){
             const { meta, criterios, iniciativas, ondas, riscos } = port;
 
@@ -418,9 +611,8 @@
             iniciativas.forEach(i => { i.pontos = pontuacao(i, criterios); });
             const kpis = kp.kpis || [];
 
-            // ---- Resumo ----
+            // Resumo
             const acima = iniciativas.filter(i => i.pontos >= meta.limiarEntrada).length;
-            const naOnda1 = iniciativas.filter(i => i.onda === 1).length;
             const noAlvo = kpis.filter(k => kpiCor(k) === COR.ok).length;
             const cards = [
                 { rotulo:'Iniciativas', valor:iniciativas.length, icone:'list-checks', cor:'text-sky-400' },
@@ -435,7 +627,7 @@
                     <p class="text-xs text-slate-400 mt-1">${c.rotulo}</p>
                 </div>`).join('');
 
-            // ---- KPIs ----
+            // KPIs
             const gEstr = kpis.filter(k => k.grupo==='estrategico' && k.visual==='gauge');
             const lEstr = kpis.filter(k => k.grupo==='estrategico' && k.visual==='linha');
             const gProd = kpis.filter(k => k.grupo==='produto' && k.visual==='gauge');
@@ -445,7 +637,7 @@
             gEstr.concat(gProd).forEach(k => makeGauge(document.getElementById('g-'+k.id), k));
             lEstr.forEach(k => makeLine(document.getElementById('l-'+k.id), k));
 
-            // ---- Ranking de iniciativas (barras) ----
+            // Ranking de iniciativas
             const ord = iniciativas.slice().sort((a,b)=>a.pontos-b.pontos);
             const rk = echarts.init(document.getElementById('chart-ranking'));
             rk.setOption({
@@ -464,7 +656,7 @@
             });
             reg(rk);
 
-            // ---- Cartões de iniciativas ----
+            // Cartões de iniciativas
             document.getElementById('iniciativas').innerHTML = ord.slice().reverse().map(i => {
                 const pct = Math.round((i.pontos/meta.pontuacaoMaxima)*100);
                 const ok = i.pontos >= meta.limiarEntrada;
@@ -493,7 +685,7 @@
                 </div>`;
             }).join('');
 
-            // ---- Matriz (tabela) ----
+            // Matriz de priorização
             document.getElementById('matriz-legenda').textContent =
                 'Nota de 1 a 5 por critério × peso. Pontuação máxima = ' + meta.pontuacaoMaxima + '. Limiar de entrada: ≥ ' + meta.limiarEntrada + '.';
             document.getElementById('matriz-head').innerHTML = `<tr>
@@ -511,7 +703,7 @@
                     <td class="px-4 py-3">${badge(dec, i.onda?'bg-emerald-500/15 text-emerald-300':'bg-slate-500/15 text-slate-300')}</td></tr>`;
             }).join('');
 
-            // ---- Scatter valor × esforço ----
+            // Scatter valor × esforço
             const lvl = { 'baixo':1, 'médio':2, 'medio':2, 'alto':3 }, labLvl = { 1:'Baixo', 2:'Médio', 3:'Alto' };
             const seen = {};
             const sc = echarts.init(document.getElementById('chart-scatter'));
@@ -538,7 +730,7 @@
             });
             reg(sc);
 
-            // ---- Roadmap: ondas ----
+            // Roadmap: ondas
             const colBack = { titulo:'Backlog priorizado', janela:'Quando liberar capacidade', itens: iniciativas.filter(i=>!i.onda) };
             const colunas = ondas.map(o => ({ titulo:'Onda '+o.numero+' · '+o.nome, janela:o.janela, itens: iniciativas.filter(i=>i.onda===o.numero) })).concat([colBack]);
             document.getElementById('roadmap').innerHTML = colunas.map(col => `
@@ -550,11 +742,11 @@
                             <div class="bg-slate-800/50 border border-slate-700/50 rounded-lg px-3 py-2">
                                 <span class="text-xs font-bold text-sky-400">${i.id}</span>
                                 <span class="text-sm text-slate-300"> ${i.nome}</span>
-                            </div>`).join('') : '<p class="text-xs text-slate-500 italic">—</p>'}
+                            </div>`).join('') : '<p class="text-xs text-slate-600 italic">—</p>'}
                     </div>
                 </div>`).join('');
 
-            // ---- Roadmap: fases do produto ----
+            // Roadmap: fases do produto
             const fases = kp.fases || [];
             document.getElementById('fases').innerHTML = fases.map(f => {
                 const cor = f.progresso>=100?'bg-emerald-500':f.progresso>0?'bg-sky-500':'bg-slate-600';
@@ -573,7 +765,7 @@
                 </div>`;
             }).join('');
 
-            // ---- Riscos: matriz HTML ----
+            // Riscos: matriz HTML
             const probOrder = ['Baixa','Média','Alta'], impOrder = ['Baixo','Médio','Alto'];
             const grid = {};
             riscos.forEach(r => {
@@ -600,7 +792,7 @@
             html += '</div><div class="flex items-center justify-between text-[10px] text-slate-500 mt-2"><span>← menor probabilidade</span><span>maior →</span></div>';
             document.getElementById('risco-matriz').innerHTML = html;
 
-            // ---- Riscos: cartões ----
+            // Riscos: cartões
             document.getElementById('riscos').innerHTML = riscos.map(r => `
                 <div class="card rounded-2xl p-5">
                     <div class="flex items-start justify-between gap-3 mb-2">
@@ -613,7 +805,9 @@
                     <p class="text-sm text-slate-400">${r.resposta}</p>
                 </div>`).join('');
 
-            document.getElementById('estado').classList.add('hidden');
+            const estadoEl = document.getElementById('estado');
+            estadoEl.classList.add('hidden');
+            estadoEl.removeAttribute('aria-busy');
             document.getElementById('conteudo').classList.remove('hidden');
             if (window.lucide) lucide.createIcons();
             charts.forEach(c => { try { c.resize(); } catch(e){} });
