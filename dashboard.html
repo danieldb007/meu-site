@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Auth check: bloqueia renderização se sessão não autenticada -->
+    <script>(function(){ if(sessionStorage.getItem('bap_auth')!=='1') document.documentElement.dataset.locked='1'; })();</script>
+
     <!-- Google tag (gtag.js) — GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF2G51WNJ7"></script>
     <script>
@@ -34,9 +37,44 @@
         .card { background-color: rgba(15,23,42,0.7); border: 1px solid #1e293b; }
         ::-webkit-scrollbar { height: 8px; width: 8px; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; }
+        /* Auth gate: oculto quando sessão já está autenticada */
+        html:not([data-locked]) #auth-gate { display: none; }
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- Auth Gate — sobreposição de acesso restrito -->
+    <div id="auth-gate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <div class="w-full max-w-sm mx-4">
+            <div class="card rounded-2xl p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <span class="text-3xl font-black text-sky-400 leading-none">◆</span>
+                    <h2 id="auth-title" class="text-xl font-bold text-white mt-3">Business Agility Portal</h2>
+                    <p class="text-sm text-slate-400 mt-1">Padrão Diamante · Área restrita</p>
+                </div>
+                <div id="auth-error" class="hidden mb-4 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2 text-center" role="alert">
+                    Senha incorreta. Tente novamente.
+                </div>
+                <form id="auth-form" novalidate>
+                    <label for="auth-password" class="block text-sm font-medium text-slate-300 mb-1.5">Senha</label>
+                    <input
+                        id="auth-password"
+                        type="password"
+                        autocomplete="current-password"
+                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition"
+                        placeholder="Digite a senha de acesso"
+                        required
+                    >
+                    <button
+                        type="submit"
+                        class="mt-4 w-full bg-sky-600 hover:bg-sky-500 active:bg-sky-700 text-white font-semibold rounded-lg px-4 py-2.5 transition-colors"
+                    >
+                        Entrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Cabeçalho -->
     <header class="border-b border-slate-800 bg-slate-950/60">
@@ -48,6 +86,14 @@
                         <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 flex items-center gap-1">
                             <i data-lucide="lock" class="w-3 h-3" aria-hidden="true"></i> Privado
                         </span>
+                        <button
+                            id="btn-sair"
+                            onclick="sessionStorage.removeItem('bap_auth'); location.reload();"
+                            class="text-xs font-medium px-2 py-0.5 rounded-full bg-slate-700/50 text-slate-400 border border-slate-600/40 hover:bg-slate-700 hover:text-slate-200 transition-colors flex items-center gap-1"
+                            title="Encerrar sessão"
+                        >
+                            <i data-lucide="log-out" class="w-3 h-3" aria-hidden="true"></i> Sair
+                        </button>
                     </div>
                     <h1 id="titulo" class="text-3xl font-bold leading-tight text-white">Business Agility Portal</h1>
                     <p id="subtitulo" class="text-slate-400 mt-1">Painel de KPIs e Evolução</p>
@@ -170,6 +216,45 @@
     </footer>
 
     <script>
+        // ---- Autenticação por senha (hash SHA-256, sessão por aba) ----
+        // Para alterar a senha: gere o hash com `echo -n "nova_senha" | sha256sum`
+        // e substitua a constante AUTH_HASH abaixo.
+        const AUTH_HASH = '04aa33ddd942dfa29ea2da56439dac63e3bb22523e49a69ee7e039132045787f'; // diamante@2026
+
+        async function _hashStr(str) {
+            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+        }
+
+        function _unlockDashboard() {
+            sessionStorage.setItem('bap_auth', '1');
+            document.documentElement.removeAttribute('data-locked');
+            const gate = document.getElementById('auth-gate');
+            if (gate) gate.remove();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('auth-form');
+            if (!form) return; // gate já foi removida pelo CSS (sessão ativa)
+            const errEl = document.getElementById('auth-error');
+            document.getElementById('auth-password').focus();
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const pwd = document.getElementById('auth-password').value;
+                const hash = await _hashStr(pwd);
+                if (hash === AUTH_HASH) {
+                    errEl.classList.add('hidden');
+                    _unlockDashboard();
+                } else {
+                    errEl.classList.remove('hidden');
+                    document.getElementById('auth-password').value = '';
+                    document.getElementById('auth-password').focus();
+                }
+            });
+        });
+
+        // ---- Gráficos / dashboard ----
         const charts = [];
         const reg = c => { charts.push(c); return c; };
         window.addEventListener('resize', () => charts.forEach(c => { try { c.resize(); } catch(e){} }));
